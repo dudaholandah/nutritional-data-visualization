@@ -49,7 +49,8 @@ function ParallelCoordinates(props) {
   
   var layout = {
     title:"Parallel Coordinates",
-    width: 1000
+    width: 1000,
+    height: 700
   };
 
   return (

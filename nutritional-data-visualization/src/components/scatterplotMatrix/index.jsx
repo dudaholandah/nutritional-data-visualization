@@ -52,7 +52,7 @@ function ScatterplotMatrix(props) {
 
   var layout = {
     title:"Scatterplot Matrix",
-    height: 1000,
+    height: 700,
     width: 1000,
     autosize: false,
     hovermode:'closest',

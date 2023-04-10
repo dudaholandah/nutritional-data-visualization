@@ -14,11 +14,19 @@ function Visualizations() {
   console.log(fileData)
 
   return (
-      <div className='visualizations'>
-        <ScatterplotMatrix data={fileData} />
+  
+    <div class="scroller">
+      <div class="scroller-item">
+        <ScatterplotMatrix  data={fileData} />
+      </div>
+      <div class="scroller-item">
         <ParallelCoordinates data={fileData} /> 
+      </div>
+      <div class="scroller-item">
         <TSNEVisualization data={fileData} />
       </div>
+    </div>
+  
   )
 
 }

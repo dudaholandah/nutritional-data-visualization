@@ -24,6 +24,7 @@ function TSNEVisualization(props){
         .then( d => {
           
           const classif = new Set(unpack(fileData, "Classification"));
+          setData([]);
 
           classif.forEach( value => { 
 
@@ -55,7 +56,7 @@ function TSNEVisualization(props){
 
     <div id="oi">
 
-      <Plot data={data} layout={{width:1000, height:600}}/>
+      <Plot data={data} layout={{width:1000, height:700}}/>
       
     </div> 
     
