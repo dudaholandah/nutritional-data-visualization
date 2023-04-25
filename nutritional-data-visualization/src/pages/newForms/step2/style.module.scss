@@ -1,0 +1,114 @@
+@import '../../../assets/variables';
+
+.forms {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  min-height: 100vh;
+
+  .steps {
+    display: flex;
+    gap: 80px;
+
+    .step {
+
+      &Curr {
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+      }
+
+      &Other {
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #bbb;
+        color: #bbb;
+      }
+    }
+  }
+
+
+
+  .frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 800px;
+    height: 600px;
+    border: 2px solid black;
+
+    .colunas {
+      display: flex;
+      flex-direction: column;
+      // justify-content: space-around;
+      // align-items: center;
+      width: 700px;
+      height: 400px;
+      border: 2px solid black;
+      // gap: 20px;
+      overflow-y: auto;
+
+      .coluna {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 20px;
+          width: 200px;
+          min-height: 35px;
+          border: 2px solid black;
+        }
+
+      }
+    }
+
+    .bottom {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 30px 0px 30px;
+      // padding-top: 30px;
+
+      button {
+        position: relative;
+        // left: 1350px;
+        // top: 27px;
+        width: 100px;
+        height: 38px;
+        background-color: $white;
+        border-radius: 0;
+        border: 2px solid black;
+
+        transition: all .2s;
+
+        &:hover {
+          background-color: $hover;
+        }
+
+        &:active{
+          transform: scale(0.95);
+        }
+
+      }
+    }
+
+
+  }
+}
