@@ -1,4 +1,4 @@
-@import '../../../assets/variables';
+@import '../../assets/variables';
 
 .forms {
 
@@ -70,6 +70,7 @@
 
         display: flex;
         align-items: center;
+        // justify-content: center;
         gap: 10px;
 
         label {
@@ -121,12 +122,13 @@
         height: 65px;
         padding-left: 20px;
         border: 2px solid black;
+        outline: none;
       }
 
       button {
         position: absolute;
         right: 10px;
-        top: 20px;
+        top: 14px;
 
         width: 90px;
         border: 2px solid black;

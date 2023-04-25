@@ -1,4 +1,5 @@
-import Toggle from '../../../components/toggle';
+import Collapsible from '../../components/componentsUI/collapsible';
+import Toggle from '../../components/componentsUI/toggle';
 import styles from './style.module.scss'
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -6,9 +7,10 @@ function Forms3() {
 
   const navigate = useNavigate();
   const {state} = useLocation();
+  const visualizacoes = ["parallelcoord", "scatterplotmatrix", "tsne"];
 
   const prevStep = () => {
-    navigate('/step2');
+    navigate('/step2', { state: state });
   }
 
   const nextStep = () => {
@@ -17,16 +19,21 @@ function Forms3() {
 
   const displayColunas = () => {
     const col = [];
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 0; i < visualizacoes.length; i++) {
 
       {/* TO-DO: display options when button checked*/ }
 
       col.push(
         <div className={styles.containerColuna}>
+
           <div className={styles.coluna}>
-            <p>visualização {i}</p><Toggle id={i} />
+            <p>{visualizacoes[i]}</p><Toggle id={"vis" + i} />
           </div>
-          <p>ver exemplo ?</p>
+
+          {/* <p>ver exemplo ?</p> */}
+
+          <Collapsible id={"col" + i} img={"exe_" + visualizacoes[i]}/>
+
         </div>);
     }
     return col;

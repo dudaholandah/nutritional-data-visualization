@@ -1,4 +1,5 @@
-import Toggle from '../../../components/toggle';
+import { useEffect, useState } from 'react';
+import Toggle from '../../components/componentsUI/toggle';
 import styles from './style.module.scss'
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -6,9 +7,19 @@ function Forms2() {
 
   const navigate = useNavigate();
   const {state} = useLocation();
+  const [columns, setColumns] = useState([]);
+  const [chosen, setChosen] = useState([]);
+
+  useEffect(() => {
+    let aux = []
+    for(const key in state.fileData[0])
+      aux.push(key);
+    setColumns(aux);
+  }, [])
+
 
   const prevStep = () => {
-    navigate('/step1');
+    navigate('/step1', { state: state });
   }
 
   const nextStep = () => {
@@ -17,13 +28,14 @@ function Forms2() {
 
   const displayColunas = () => {
     const col = [];
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 0; i < columns.length; i++) {
 
       {/* TO-DO: display options when button checked*/ }
 
       col.push(
         <div className={styles.coluna}>
-          <p>exemplo {i}</p><Toggle id={i} />
+          <p>{columns[i]}</p>
+          <Toggle id={"key " + i}/>
         </div>);
     }
     return col;

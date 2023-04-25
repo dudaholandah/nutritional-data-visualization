@@ -1,9 +1,9 @@
 import './App.scss'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Visualizations from './pages/visualizations';
-import Forms1 from './pages/newForms/step1';
-import Forms2 from './pages/newForms/step2';
-import Forms3 from './pages/newForms/step3';
+import Forms1 from './pages/formsStep1';
+import Forms2 from './pages/formsStep2';
+import Forms3 from './pages/formsStep3';
 
 function App() {
 

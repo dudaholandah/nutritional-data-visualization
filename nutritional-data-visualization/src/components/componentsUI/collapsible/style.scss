@@ -1,0 +1,63 @@
+// ref: https://codepen.io/alexerlandsson/pen/jEXVjO
+
+//Mixins
+@mixin transition($property, $duration, $timing) {
+	-webkit-transition: $property $duration $timing;
+	-moz-transition: $property $duration $timing;
+	-o-transition: $property $duration $timing;
+	transition: $property $duration $timing;
+}
+
+// Toggle List 
+.container {
+	width: 100%;	
+	margin: 0 auto;
+	text-align: center;
+
+	.item {
+		width: 100%;
+		input[type="checkbox"] {
+			display: none;
+			&:checked {
+				& + label {
+					&:after {
+						content: "-";
+					}
+					& + div {
+						display: flex;
+            justify-content: center;
+					}
+				}
+			}
+		}
+
+		label {
+			display: block;
+			width: 100%;
+			position: relative;
+			padding: 15px;
+			color: #353535;
+			cursor: pointer;
+			&:after {
+				content: "+";
+				font-weight: bold;
+				position: absolute;
+				left: 250px;  
+				color: #353535;
+			}
+			&:hover {
+				@include transition(background-color, 100ms, linear);
+			}
+		}
+		div {
+			display: none;
+			border-top: none;
+			padding: 15px;
+			text-align: left;
+
+      img{
+        width: 100%;
+      }
+		}
+	}
+}

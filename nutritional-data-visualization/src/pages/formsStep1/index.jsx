@@ -5,9 +5,6 @@ import * as XLSX from 'xlsx/xlsx.mjs';
 
 function Forms1() {
 
-
-  const [fileData, setFileData] = useState()
-
   const [fileDetails, setFileDetails] = useState({
     sheetName: "",
     fileName: "",
