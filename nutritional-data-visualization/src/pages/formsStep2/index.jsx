@@ -8,13 +8,18 @@ function Forms2() {
   const navigate = useNavigate();
   const {state} = useLocation();
   const [columns, setColumns] = useState([]);
-  const [chosen, setChosen] = useState([]);
+  const [chosen, setChosen] = useState({});
 
   useEffect(() => {
-    let aux = []
-    for(const key in state.fileData[0])
-      aux.push(key);
-    setColumns(aux);
+    let auxCol = [];
+    let auxChos = {};
+    for(const key in state.fileData[0]){
+      auxCol.push(key);
+      auxChos[key] = 0;
+    }
+      
+    setColumns(auxCol);
+    setChosen(auxChos);
   }, [])
 
 
@@ -23,7 +28,16 @@ function Forms2() {
   }
 
   const nextStep = () => {
-    navigate('/step3', { state: state });
+
+    let aux = [];
+    let newState = state
+    for(const key in chosen){
+      if (chosen[key] == 1) aux.push(key);
+    } 
+
+    newState = {...newState, chosen:aux}
+
+    navigate('/step3', { state: newState });
   }
 
   const displayColunas = () => {
@@ -35,7 +49,7 @@ function Forms2() {
       col.push(
         <div className={styles.coluna}>
           <p>{columns[i]}</p>
-          <Toggle id={"key " + i}/>
+          <Toggle id={columns[i]} chosen={ {chosen, setChosen} }/>
         </div>);
     }
     return col;
