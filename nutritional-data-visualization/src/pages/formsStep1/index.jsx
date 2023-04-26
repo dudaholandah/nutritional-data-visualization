@@ -96,7 +96,7 @@ function Forms1() {
               type="file" id="actual-btn" hidden
               accept='xlsx, xls' multiple={false} ref={fileRef}
               onChange={(e) => handleFile(e)} />
-            <label for="actual-btn">escolha o arquivo</label>
+            <label htmlFor="actual-btn">escolha o arquivo</label>
             <span id="file-chosen">
               {
                 fileDetails.fileName ?
@@ -110,7 +110,7 @@ function Forms1() {
         </div>
 
         <form>
-          <div class={styles.planilha}>
+          <div className={styles.planilha}>
             <input
               type='text'
               autoFocus={true}

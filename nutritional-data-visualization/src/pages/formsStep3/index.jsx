@@ -45,7 +45,7 @@ function Forms3() {
       {/* TO-DO: display options when button checked*/ }
 
       col.push(
-        <div className={styles.containerColuna}>
+        <div className={styles.containerColuna} key={i}>
 
           <div className={styles.coluna}>
             <p>{visualizacoes[i]}</p>

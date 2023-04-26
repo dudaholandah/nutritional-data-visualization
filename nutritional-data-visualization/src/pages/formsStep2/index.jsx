@@ -47,7 +47,7 @@ function Forms2() {
       {/* TO-DO: display options when button checked*/ }
 
       col.push(
-        <div className={styles.coluna}>
+        <div className={styles.coluna} key={i}>
           <p>{columns[i]}</p>
           <Toggle id={columns[i]} chosen={ {chosen, setChosen} }/>
         </div>);
