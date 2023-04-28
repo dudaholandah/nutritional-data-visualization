@@ -9,17 +9,46 @@ function Forms3() {
   const navigate = useNavigate();
   const {state} = useLocation();
   const visualizacoes = ["parallelcoord", "scatterplotmatrix", "tsne"];
-  const [chosen, setChosen] = useState({});
+  const [visualizationsChosen, setVisualizationsChosen] = useState(new Set());
 
-  useEffect(() => {
-    let auxChos = {};
-    for(const vis in visualizacoes){
-      auxChos[vis] = 0;
-    }
-    setChosen(auxChos);
-  }, [])
+  // useEffect(() => {
+  //   let auxChos = {};
+  //   for(const vis in visualizacoes){
+  //     auxChos[vis] = 0;
+  //   }
+  //   setChosen(auxChos);
+  // }, [])
 
   console.log(state)
+
+  const toggleService = {
+
+    handleChecked: function(event, val){
+
+      // console.log(val);
+
+      let aux = visualizationsChosen;
+      // aux.columns.add(val);
+      aux.add(val);
+      setVisualizationsChosen(aux);
+
+      console.log(visualizationsChosen);
+    },
+
+    handleUnchecked: function(event, val){
+      let aux = visualizationsChosen;
+      // aux.columns.delete(val);
+      aux.delete(val);
+      setVisualizationsChosen(aux);
+
+      console.log(visualizationsChosen);
+    },
+
+    // teste: function(val){
+    //   console.log(val);
+    // }
+
+  }
 
   const prevStep = () => {
     navigate('/step2', { state: state });
@@ -27,13 +56,18 @@ function Forms3() {
 
   const nextStep = () => {
 
-    let aux = new Set();
     let newState = state
-    for(const key in chosen){
-      if (chosen[key] == 1) aux.add(key);
-    } 
+    // let aux = {visualizacoes: visualizationsChosen};
+    // for(const key in chosen){
+    //   if (chosen[key] == 1) aux.add(key);
+    // } 
 
-    newState = {...newState, visualizations:aux};
+    // newState = {...newState, visualizations:aux};
+
+    // console.log("----")
+    // console.log(state.state)
+
+    newState = {...newState, visualizations:visualizationsChosen};
 
     navigate('/visualizations', { state: newState });
   }
@@ -42,14 +76,16 @@ function Forms3() {
     const col = [];
     for (let i = 0; i < visualizacoes.length; i++) {
 
-      {/* TO-DO: display options when button checked*/ }
-
       col.push(
         <div className={styles.containerColuna} key={i}>
 
           <div className={styles.coluna}>
             <p>{visualizacoes[i]}</p>
-            <Toggle id={visualizacoes[i]} chosen={ {chosen, setChosen} }/>
+            <Toggle 
+              id={visualizacoes[i]} 
+              handleChecked = {event => toggleService.handleChecked(event,visualizacoes[i])}
+              handleUnchecked = {event => toggleService.handleUnchecked(event,visualizacoes[i])}  
+            />
           </div>
 
           {/* <p>ver exemplo ?</p> */}

@@ -9,30 +9,33 @@ import TSNEVisualization from '../../components/TSNEVisualization';
 function Visualizations() {
 
   const { state } = useLocation();
-  const { sheetName, fileName, fileData, columns, visualizations } = state
+  // const { columns, fileData, fileName, sheetName, visualizations } = state
 
-  console.log(visualizations)
+  console.log(state)
 
   return (
 
     <div className='visualizations'>
       <div className="scroller">
 
-        {visualizations.has('scatterplotmatrix') &&
+        {
+          state.visualizations.has('scatterplotmatrix') &&
           <div className="scroller-item">
-            <ScatterplotMatrix data={fileData} />
+            <ScatterplotMatrix data={state.fileData} />
           </div>
         }
         
-        {visualizations.has('parallelcoord') &&
+        {
+          state.visualizations.has('parallelcoord') &&
           <div className="scroller-item">
-            <ParallelCoordinates data={fileData} />
+            <ParallelCoordinates data={state.fileData} />
           </div>
         }
 
-        {visualizations.has('tsne') &&        
+        {
+          state.visualizations.has('tsne') &&        
           <div className="scroller-item">
-            <TSNEVisualization data={fileData} />
+            <TSNEVisualization data={state.fileData} />
           </div>
         }
       </div>

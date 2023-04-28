@@ -18,26 +18,37 @@ function Forms1() {
 
     e.preventDefault();
 
-    console.log(fileDetails.sheetName);
+    try {
 
-    var wb = XLSX.read(fileDetails.fileData, { type: 'binary' });
-    let sheetNameExists = false;
+      console.log(fileDetails.sheetName);
 
-    for (let i = 0; i < wb.SheetNames.length; i++) {
-      if (wb.SheetNames[i] === fileDetails.sheetName) sheetNameExists = true;
+      var wb = XLSX.read(fileDetails.fileData, { type: 'binary' });
+      let sheetNameExists = false;
+
+      for (let i = 0; i < wb.SheetNames.length; i++) {
+        if (wb.SheetNames[i] === fileDetails.sheetName) sheetNameExists = true;
+      }
+
+      if (!sheetNameExists) {
+        alert("O nome da planilha é inválido.");
+        return;
+      }
+      else{
+        alert("O nome da planilha foi salvo com sucesso.");
+      }
+
+      const ws = wb.Sheets[fileDetails.sheetName];
+      const dataParse = XLSX.utils.sheet_to_json(ws);
+
+      setFileDetails(previousState => {
+        return { ...previousState, fileData: dataParse }
+      });
+
+    } catch (error) {
+      alert("Operação inválida.");
     }
 
-    if (!sheetNameExists) {
-      alert("Invalid Sheet Name");
-      return;
-    }
-
-    const ws = wb.Sheets[fileDetails.sheetName];
-    const dataParse = XLSX.utils.sheet_to_json(ws);
-
-    setFileDetails(previousState => {
-      return { ...previousState, fileData: dataParse }
-    });
+    
 
   }
 
