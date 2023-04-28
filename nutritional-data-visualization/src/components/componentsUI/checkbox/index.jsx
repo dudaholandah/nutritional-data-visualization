@@ -15,32 +15,26 @@ function Checkbox(props) {
       let aux = chosen;
 
       if(props.content == "atributo"){
-        aux.add(props.column);
+        aux.atributo.add(props.column);
       }
       else if(props.content == "descricao"){
-        aux.add(props.column);
+        aux.descricao.add(props.column);
       }
       else{
-        if(aux !== ""){
+        if(aux.label !== ""){
           checkbox.current.checked = false;
           alert("Apenas uma coluna pode ser label. Desmarque a última opção.")
           return;
         }
-        else aux = props.column;
+        else aux.label = props.column;
       }    
       
-      setChosen(aux);
+      setChosen(prev => ({...prev, 
+        atributo: aux.atributo,
+        descricao: aux.descricao,
+        label: aux.label}))
 
       console.log(chosen);
-
-      // checkbox.current.checked = false;
-
-      // let auxChosen = {...props.chosen.chosen};
-      // auxChosen[props.id] = 1;
-
-      // props.chosen.setChosen(curr => ({
-      //   ...auxChosen
-      // })) 
     }
     else{
       checkbox.checked = false;
@@ -49,24 +43,21 @@ function Checkbox(props) {
       let aux = chosen;
 
       if(props.content === "atributo"){
-        aux.delete(props.column);
+        aux.atributo.delete(props.column);
       }
       else if(props.content === "descricao"){
-        aux.delete(props.column);
+        aux.descricao.delete(props.column);
       }
       else{
-        aux = "";
+        aux.label = "";
       }  
 
-      setChosen(aux);
+      setChosen(prev => ({...prev, 
+        atributo: aux.atributo,
+        descricao: aux.descricao,
+        label: aux.label}))
 
       console.log(chosen);
-      
-      // let auxChosen = {...props.chosen.chosen};
-      // delete auxChosen[props.id];
-      // props.chosen.setChosen(curr => ({
-      //   ...auxChosen
-      // })) 
     }
   }
 

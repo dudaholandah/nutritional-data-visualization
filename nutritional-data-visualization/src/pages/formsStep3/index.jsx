@@ -11,24 +11,13 @@ function Forms3() {
   const visualizacoes = ["parallelcoord", "scatterplotmatrix", "tsne"];
   const [visualizationsChosen, setVisualizationsChosen] = useState(new Set());
 
-  // useEffect(() => {
-  //   let auxChos = {};
-  //   for(const vis in visualizacoes){
-  //     auxChos[vis] = 0;
-  //   }
-  //   setChosen(auxChos);
-  // }, [])
-
   console.log(state)
 
   const toggleService = {
 
     handleChecked: function(event, val){
 
-      // console.log(val);
-
       let aux = visualizationsChosen;
-      // aux.columns.add(val);
       aux.add(val);
       setVisualizationsChosen(aux);
 
@@ -37,16 +26,11 @@ function Forms3() {
 
     handleUnchecked: function(event, val){
       let aux = visualizationsChosen;
-      // aux.columns.delete(val);
       aux.delete(val);
       setVisualizationsChosen(aux);
 
       console.log(visualizationsChosen);
     },
-
-    // teste: function(val){
-    //   console.log(val);
-    // }
 
   }
 
@@ -57,18 +41,7 @@ function Forms3() {
   const nextStep = () => {
 
     let newState = state
-    // let aux = {visualizacoes: visualizationsChosen};
-    // for(const key in chosen){
-    //   if (chosen[key] == 1) aux.add(key);
-    // } 
-
-    // newState = {...newState, visualizations:aux};
-
-    // console.log("----")
-    // console.log(state.state)
-
     newState = {...newState, visualizations:visualizationsChosen};
-
     navigate('/visualizations', { state: newState });
   }
 
@@ -87,8 +60,6 @@ function Forms3() {
               handleUnchecked = {event => toggleService.handleUnchecked(event,visualizacoes[i])}  
             />
           </div>
-
-          {/* <p>ver exemplo ?</p> */}
 
           <Collapsible id={"col" + i} img={"exe_" + visualizacoes[i]}/>
 
