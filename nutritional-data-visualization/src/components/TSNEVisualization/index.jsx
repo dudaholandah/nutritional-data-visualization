@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Plot from 'react-plotly.js'
+import VisualizationsService from "../../service/visualizationsService";
 
 function TSNEVisualization(props){
 
   const [fileData, setFileData] = useState(props.data);
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+  const columns = props.columns;
 
-  function unpack(rows, key) {
-    return rows.map(function(row) { return row[key]; });
-  }
-
-  // arrumar para chamar somente uma vez quando data = []
   useEffect(() => {
 
     fetch("http://localhost:5000/tsne",{
@@ -23,14 +20,14 @@ function TSNEVisualization(props){
         .then( res => res.json())
         .then( d => {
           
-          const classif = new Set(unpack(fileData, "Classification"));
+          const classif = new Set(VisualizationsService.unpack(fileData, columns.label));
           setData([]);
 
           classif.forEach( value => { 
 
             let auxX = [], auxY = [];
-            for(let i=0; i<unpack(fileData, "Classification").length; i++){
-              if(unpack(fileData, "Classification")[i] === value){
+            for(let i=0; i<VisualizationsService.unpack(fileData, columns.label).length; i++){
+              if(VisualizationsService.unpack(fileData, columns.label)[i] === value){
                 auxX.push(d.X[i]);
                 auxY.push(d.y[i]);
               }
@@ -54,10 +51,8 @@ function TSNEVisualization(props){
 
   return(
 
-    <div id="oi">
-
+    <div id="tsne">
       <Plot data={data} layout={{width:1000, height:700}}/>
-      
     </div> 
     
   )

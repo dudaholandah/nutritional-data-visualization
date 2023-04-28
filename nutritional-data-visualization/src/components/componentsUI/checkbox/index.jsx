@@ -21,7 +21,7 @@ function Checkbox(props) {
         aux.add(props.column);
       }
       else{
-        if(aux != ""){
+        if(aux !== ""){
           checkbox.current.checked = false;
           alert("Apenas uma coluna pode ser label. Desmarque a última opção.")
           return;
@@ -48,14 +48,14 @@ function Checkbox(props) {
 
       let aux = chosen;
 
-      if(props.content == "atributo"){
+      if(props.content === "atributo"){
         aux.delete(props.column);
       }
-      else if(props.content == "descricao"){
+      else if(props.content === "descricao"){
         aux.delete(props.column);
       }
       else{
-        aux.label = "";
+        aux = "";
       }  
 
       setChosen(aux);

@@ -21,21 +21,21 @@ function Visualizations() {
         {
           state.visualizations.has('scatterplotmatrix') &&
           <div className="scroller-item">
-            <ScatterplotMatrix data={state.fileData} />
+            <ScatterplotMatrix data={state.fileData} columns={state.columns} />
           </div>
         }
         
         {
           state.visualizations.has('parallelcoord') &&
           <div className="scroller-item">
-            <ParallelCoordinates data={state.fileData} />
+            <ParallelCoordinates data={state.fileData} columns={state.columns}/>
           </div>
         }
 
         {
           state.visualizations.has('tsne') &&        
           <div className="scroller-item">
-            <TSNEVisualization data={state.fileData} />
+            <TSNEVisualization data={state.fileData} columns={state.columns}/>
           </div>
         }
       </div>
