@@ -1,4 +1,5 @@
-import './style.scss'
+// import './style.scss'
+import styles from './style.module.scss'
 import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import ScatterplotMatrix from '../../components/scatterplotMatrix';
@@ -15,29 +16,31 @@ function Visualizations() {
 
   return (
 
-    <div className='visualizations'>
-      <div className="scroller">
+    <div className={styles.visualizations}>
+      <div className={styles.box}>
+        <div className={styles.scroller}>
 
-        {
-          state.visualizations.has('scatterplotmatrix') &&
-          <div className="scroller-item">
-            <ScatterplotMatrix data={state.fileData} columns={state.columns} />
-          </div>
-        }
-        
-        {
-          state.visualizations.has('parallelcoord') &&
-          <div className="scroller-item">
-            <ParallelCoordinates data={state.fileData} columns={state.columns}/>
-          </div>
-        }
+          {
+            state.visualizations.has('scatterplotmatrix') &&
+            <div className={styles.scrollerItem}>
+              <ScatterplotMatrix data={state.fileData} columns={state.columns} />
+            </div>
+          }
+          
+          {
+            state.visualizations.has('parallelcoord') &&
+            <div className={styles.scrollerItem}>
+              <ParallelCoordinates data={state.fileData} columns={state.columns}/>
+            </div>
+          }
 
-        {
-          state.visualizations.has('tsne') &&        
-          <div className="scroller-item">
-            <TSNEVisualization data={state.fileData} columns={state.columns}/>
-          </div>
-        }
+          {
+            state.visualizations.has('tsne') &&        
+            <div className={styles.scrollerItem}>
+              <TSNEVisualization data={state.fileData} columns={state.columns}/>
+            </div>
+          }
+        </div>
       </div>
     </div>
 

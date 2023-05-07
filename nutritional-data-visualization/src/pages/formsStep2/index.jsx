@@ -85,23 +85,23 @@ function Forms2() {
 
       col.push(
         <div key={i}>
-        <div className={styles.coluna} >
-          <p>{columns[i]}</p>
-          <Toggle 
-            id={columns[i]} 
-            handleChecked = {event => toggleService.handleChecked(event,columns[i])}
-            handleUnchecked = {event => toggleService.handleUnchecked(event,columns[i])}
-            />
-        </div>
+          <div className={styles.coluna} >
+            <p>{columns[i]}</p>
+            <Toggle 
+              id={columns[i]} 
+              handleChecked = {event => toggleService.handleChecked(event,columns[i])}
+              handleUnchecked = {event => toggleService.handleUnchecked(event,columns[i])}
+              />
+          </div>
 
-        {
-          chosen.columns.has(columns[i]) &&
-          <div className={styles.options} >
-            <Checkbox id={"label" + i} column={columns[i]} content="label" state={ {chosen: chosen, setChosen: setChosen} }/>
-            <Checkbox id={"descricao" + i} column={columns[i]} content="descricao" state={ {chosen: chosen, setChosen: setChosen} }/>
-            <Checkbox id={"atributo" + i} column={columns[i]} content="atributo" state={ {chosen:chosen, setChosen: setChosen} } checked={true} />
-          </div> 
-        }
+          {
+            chosen.columns.has(columns[i]) &&
+            <div className={styles.options} >
+              <Checkbox id={"label" + i} column={columns[i]} content="label" state={ {chosen: chosen, setChosen: setChosen} }/>
+              <Checkbox id={"descricao" + i} column={columns[i]} content="descricao" state={ {chosen: chosen, setChosen: setChosen} }/>
+              <Checkbox id={"atributo" + i} column={columns[i]} content="atributo" state={ {chosen:chosen, setChosen: setChosen} } checked={true} />
+            </div> 
+          }
         </div>);
 
     }
@@ -120,7 +120,9 @@ function Forms2() {
         <p style={{ fontSize: '20px' }}>Quais colunas você deseja incluir nas visualizações?</p>
 
         <div className={styles.colunas}>
-          {displayColunas()}
+          <div className={styles.inner} >
+            {displayColunas()}  
+          </div>
         </div>
         <div className={styles.bottom}>
           <button onClick={prevStep}>anterior</button>

@@ -1,0 +1,36 @@
+@import '../../assets/variables';
+
+.visualizations {
+
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../data/forms_background.png');
+  background-position: center; /* Center the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+
+  .box{
+    border: 2px solid $black;
+    border-radius: $border-radius;
+    overflow: hidden;
+    
+    .scroller {  
+      max-width: 1000px;
+      // padding: 10px;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 15px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+  
+      .scrollerItem {
+        scroll-snap-align: start;
+        scroll-snap-type: initial;
+        scroll-margin-inline-start: 0;
+      }
+  
+    }
+  }
+
+}
