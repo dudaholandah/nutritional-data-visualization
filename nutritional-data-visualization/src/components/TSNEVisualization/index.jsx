@@ -3,7 +3,7 @@ import Plot from 'react-plotly.js'
 import VisualizationsService from "../../service/visualizationsService";
 import axios from "axios";
 
-function TSNEVisualization(props){
+function TSNEVisualization(props) {
 
   const [fileData, setFileData] = useState(props.data);
   const [data, setData] = useState([]);
@@ -13,25 +13,25 @@ function TSNEVisualization(props){
 
   useEffect(() => {
 
-    // fetch("http://localhost:80/tsne",{
-    //     'method':'POST',
-    //     headers: {
-    //       'Content-Type' : 'application/json'
-    //     },
-    //     body: JSON.stringify(fileData)
-    //   })  
-    axios.get(`${baseurl}/tsne`)
-      .then( res => res.json())
-      .then( d => {
-        
+    fetch(`${baseurl}/tsne`, {
+      'method': 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(fileData)
+    })
+      .then(res => res.json())
+      .then(d => {
+
         const classif = new Set(VisualizationsService.unpack(fileData, columns.label));
         setData([]);
 
-        classif.forEach( value => { 
+        classif.forEach(value => {
 
           let auxX = [], auxY = [];
-          for(let i=0; i<VisualizationsService.unpack(fileData, columns.label).length; i++){
-            if(VisualizationsService.unpack(fileData, columns.label)[i] === value){
+          for (let i = 0; i < VisualizationsService.unpack(fileData, columns.label).length; i++) {
+            if (VisualizationsService.unpack(fileData, columns.label)[i] === value) {
               auxX.push(d.X[i]);
               auxY.push(d.y[i]);
             }
@@ -45,20 +45,20 @@ function TSNEVisualization(props){
             type: 'scatter'
           };
 
-          setData( oldArray => [...oldArray, group]);
+          setData(oldArray => [...oldArray, group]);
 
         })
 
-      }) 
+      })
 
-  }, []);  
+  }, []);
 
-  return(
+  return (
 
     <div id="tsne">
-      <Plot data={data} layout={{width:1000, height:700}}/>
-    </div> 
-    
+      <Plot data={data} layout={{ width: 1000, height: 700 }} />
+    </div>
+
   )
 }
 
