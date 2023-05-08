@@ -10,7 +10,11 @@ from unidecode import unidecode
 import json
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resource={
+    r"/*":{
+        "origins":"*"
+    }
+})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 def pre_process(text):
