@@ -121,5 +121,6 @@ def tsne_data():
       
 # Running app
 if __name__ == '__main__':
-    app.run(debug=True)
+    from waitress import serve
+    serve(app)
     
