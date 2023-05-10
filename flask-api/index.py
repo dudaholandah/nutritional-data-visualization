@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 from sklearn import preprocessing
 from sklearn.manifold import TSNE
@@ -10,8 +10,7 @@ from unidecode import unidecode
 import json
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/foo": {"origins": "*"}})
-app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS()
 
 def pre_process(text):
   text = re.sub(r'[.,():%-]+', " ", text)
@@ -98,8 +97,8 @@ def pre_processing_data(fileData):
 
   return X, y, data
   
-@app.route('/tsne', methods=['POST','OPTIONS'])
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+@app.route('/tsne', methods=['POST'])
+@cross_origin()
 def tsne_data(): 
   fileData = request.get_json()
 
