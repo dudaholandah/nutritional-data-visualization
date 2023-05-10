@@ -6,12 +6,6 @@
           "use": "@vercel/python"
         }
       ],
-    "routes": [
-        {
-            "src": "/tsne",
-            "dest": "/api/index.py"
-        }
-    ],
     "headers": [
       {
         "source": "/api/(.*)",
@@ -23,5 +17,5 @@
         ]
       }
     ]
-  }
+}
   
