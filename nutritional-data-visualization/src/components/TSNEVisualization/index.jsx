@@ -9,11 +9,9 @@ function TSNEVisualization(props) {
   const [data, setData] = useState([]);
   const columns = props.columns;
 
-  const baseurl = "https://nutritional-data-visualization-backend.vercel.app";
-
   useEffect(() => {
 
-    fetch(`${baseurl}/tsne`, {
+    fetch('https://nutritional-data-visualization-backend.vercel.app/tsne', {
       'method': 'POST',
       mode: 'cors',
       headers: {
