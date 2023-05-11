@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy":"https://nutritional-data-visualization-backend.vercel.app/",
+  "proxy": "https://nutritional-data-visualization-backend.vercel.app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
