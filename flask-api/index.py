@@ -1,6 +1,5 @@
 from flask import Flask, request
-from flask_cors import CORS, cross_origin
-
+from flask_cors import CORS
 from sklearn import preprocessing
 from sklearn.manifold import TSNE
 import pandas as pd
@@ -98,7 +97,6 @@ def pre_processing_data(fileData):
   return X, y, data
   
 @app.route('/tsne', methods=['POST'])
-@cross_origin()
 def tsne_data(): 
   fileData = request.get_json()
 
