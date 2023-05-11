@@ -3,7 +3,7 @@ from flask_cors import CORS
 import json
 import pandas as pd
 from auxiliary import *
-from sklearn.manifold import TSNE
+# from sklearn.manifold import TSNE
 
 app = Flask(__name__)
 CORS(app)
@@ -32,13 +32,13 @@ def tsne_data():
 
   X, y, data = pre_processing_data(fileData)
 
-  tsne = TSNE(n_components=2,perplexity=5,learning_rate=350,metric='euclidean', init='pca')
-  X_tsne = tsne.fit_transform(X)
+  # tsne = TSNE(n_components=2,perplexity=5,learning_rate=350,metric='euclidean', init='pca')
+  # X_tsne = tsne.fit_transform(X)
 
-  X_tsne[1:4,:]
+  # X_tsne[1:4,:]
 
-  X = X_tsne[:,0]
-  y = X_tsne[:,1]
+  # X = X_tsne[:,0]
+  # y = X_tsne[:,1]
 
   X = X.tolist()
   y = y.tolist()
