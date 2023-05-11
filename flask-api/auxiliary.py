@@ -1,4 +1,4 @@
-from sklearn import preprocessing
+# from sklearn import preprocessing
 import numpy as np
 import pandas as pd
 import re
@@ -18,14 +18,14 @@ def separating_data(df):
   label_data = data_classification.join(data_name)
   return data_ingredients, data_nutrients, label_data
 
-def normalizing_nutrients(data_nutrients):
-  X = data_nutrients.values
-  attributes_dummies = data_nutrients.columns
-  normalize = preprocessing.MinMaxScaler()
-  xscaled = normalize.fit_transform(X)
-  nutrients_normalized = pd.DataFrame(xscaled,columns=attributes_dummies)
-  nutrients_normalized = nutrients_normalized.replace(np.nan,0)
-  return nutrients_normalized
+# def normalizing_nutrients(data_nutrients):
+#   X = data_nutrients.values
+#   attributes_dummies = data_nutrients.columns
+#   normalize = preprocessing.MinMaxScaler()
+#   xscaled = normalize.fit_transform(X)
+#   nutrients_normalized = pd.DataFrame(xscaled,columns=attributes_dummies)
+#   nutrients_normalized = nutrients_normalized.replace(np.nan,0)
+#   return nutrients_normalized
 
 # def normalizing_ingredients(data_ingredients):
 #   vocab = set()

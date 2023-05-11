@@ -15,14 +15,14 @@ def pre_processing_data(fileData):
   data_ingredients, data_nutrients, label_data = separating_data(df)
 
   # normalizing nutrients
-  nutrients_normalized = normalizing_nutrients(data_nutrients)
+  # nutrients_normalized = normalizing_nutrients(data_nutrients)
 
   # # normalizing ingredients
   # ingredients_normalized = normalizing_ingredients(data_ingredients)
 
   # final data
   # X, y, data = final_data(ingredients_normalized, nutrients_normalized, label_data)
-  X, y, data = final_data(nutrients_normalized, label_data)
+  X, y, data = final_data(data_nutrients, label_data)
 
   return X, y, data
   
