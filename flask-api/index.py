@@ -1,5 +1,4 @@
 from flask import Flask, request
-from flask_cors import CORS
 from sklearn import preprocessing
 from sklearn.manifold import TSNE
 import pandas as pd
@@ -9,7 +8,6 @@ from unidecode import unidecode
 import json
 
 app = Flask(__name__)
-cors = CORS()
 
 def pre_process(text):
   text = re.sub(r'[.,():%-]+', " ", text)
